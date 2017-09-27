@@ -9,8 +9,8 @@
   <div class="row">
     <div class="col-lg-2"></div>
     <div class="col-lg-8 input-group input-group-lg">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+      <input [(ngModel)] = "query"  name="query" id="name" class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button (click)="search()" class="btn btn-outline-primary my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
     </div>
     <div class="col-lg-2"></div>
   </div>
@@ -46,4 +46,3 @@
   <!--end search results table-->
 
 </div>
-
