@@ -23,7 +23,7 @@ app.get('/:q', function (req, res) {
         // results.hits.hits.forEach((hit, index) => {
         // console.log(`${hit._source.text} ${hit._source.user_id}`);
         // resArr.push({ "text": hit._source.text });
-        res.send(results);
+        res.send(results.hits.hits);
     })
         .catch(console.error);
 })
