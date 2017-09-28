@@ -11,14 +11,14 @@ export class SearchService {
 
   constructor(private _http: Http) {}
 
-  serverUrl = environment.serverUrl;
+  serverUrl = environment.serverUrl; // fetching server url from environment config file
 
   search(query: String) {
 
     return this._http.get(this.serverUrl + query)
       .map(
         (res: Response) => {
-          return res;
+          return res.json();
         }
       );
   }

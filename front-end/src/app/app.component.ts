@@ -17,6 +17,8 @@ export class AppComponent {
 
   search() {
 
+    console.log(this.query);
+
     this.searchService.search(this.query)
       .subscribe(
         (data: any) => {
