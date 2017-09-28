@@ -13,12 +13,17 @@ export class AppComponent {
 
   title = 'app';
   query = '';
+  result = [];
 
   search() {
 
     this.searchService.search(this.query)
       .subscribe(
-        (data: any) => console.log(data),
+        (data: any) => {
+          console.log(data._body);
+          const body = JSON.parse(data._body);
+          this.result = body;
+        },
         (error: any) => console.log(error)
       );
 

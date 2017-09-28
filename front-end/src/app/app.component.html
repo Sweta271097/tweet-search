@@ -25,19 +25,19 @@
       <table class="table">
         <thead>
         <tr>
-          <th>#</th>
           <th>Created At</th>
           <th>Text</th>
           <th>User Id</th>
         </tr>
         </thead>
         <tbody>
+        <div *ngFor="let res of result">
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>{{res._source.created_at}}</td>
+            <td>{{res._source.text}}</td>
+            <td>{{res._source.user_id}}</td>
           </tr>
+        </div>
         </tbody>
       </table>
     </div>
