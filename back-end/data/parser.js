@@ -54,7 +54,9 @@ fs.readFile('assignment_tweet (1).txt', 'utf8', function(err,data) {
             line = line.substr(lens[j]+1);
        }
 
-       result.push(obj);
+       // check if the object complies to the format
+       if(!(obj.user_id == ""))
+           result.push(obj);
 
        // writing result into a file after converting into JSON string
        var json = JSON.stringify(result);
@@ -68,7 +70,3 @@ fs.readFile('assignment_tweet (1).txt', 'utf8', function(err,data) {
        });
     }
 });
-
-
-
-

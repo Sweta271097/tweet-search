@@ -8,7 +8,7 @@ exports.searchAll = function (queryStr) {
     });
 
     let body = {
-        size: 20,
+        size: 1000,
         from: 0,
         query: {
             match: {

@@ -18,7 +18,7 @@ export class SearchService {
     return this._http.get(this.serverUrl + query)
       .map(
         (res: Response) => {
-          return res.json();
+          return res;
         }
       );
   }
