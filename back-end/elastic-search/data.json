@@ -1,27 +1,12 @@
 [
-  {
-    "created_at": "2014-06-01 23:07:58",
-    "text": "President Resigns in Georgia’s Breakaway Region of Abkhazia http://t.co/DAploRvCvV",
-    "user_id": "nytimes"
-  },
-  {
-    "created_at": "2014-06-01 23:48:06",
-    "text": "The NYT FlipBoard guide to understanding climate change and its consequences http://t.co/uPGTuYiSmQ",
-    "user_id": "nytimes"
-  },
-  {
-    "created_at": "2014-06-01 23:59:06",
-    "text": "For all the struggles that young college grads face, a four-year degree has probably never been more valuable http://t.co/Gjf6wrwMsS",
-    "user_id": "nytimes"
-  },
-  {
-    "created_at": "2014-06-01 23:07:58",
-    "text": "President Resigns in President’s Breakaway Region of Abkhazia http://t.co/DAploRvCvV",
-    "user_id": "nytimes"
-  },
-  {
-    "created_at": "2014-06-01 23:07:58",
-    "text": "President Resigns in Georgia’s President Region of President http://t.co/DAploRvCvV",
-    "user_id": "nytimes"
-  }
+{
+"created_at":"2014-06-01 23:07:58",
+"text":"President Resigns in Georgia’s Breakaway Region of Abkhazia http://t.co/DAploRvCvV",
+"user_id":"nytimes"
+},
+{
+"created_at":"2014-06-01 23:48:06",
+"text":"The NYT FlipBoard guide to understanding climate change and its consequences http://t.co/uPGTuYiSmQ",
+"user_id":"nytimes"
+}
 ]

@@ -9,6 +9,7 @@
   });
 
   const bulkIndex = function bulkIndex(index, type, data) {
+
     let bulkBody = [];
 
     data.forEach(item => {
@@ -36,18 +37,13 @@
     .catch(console.err);
   };
 
-  // only for testing purposes
-  // all calls should be initiated through the module
-  const test = function test() {
-    const articlesRaw = fs.readFileSync('data.json');
+  // process the index on data.json file
+  (function process() {
+    const articlesRaw = fs.readFileSync('../data/data.json');
     const articles = JSON.parse(articlesRaw);
     console.log(`${articles.length} items parsed from data file`);
     bulkIndex('library', 'article', articles);
-  };
+  }());
 
-  test();
 
-  module.exports = {
-    bulkIndex
-  };
 } ());

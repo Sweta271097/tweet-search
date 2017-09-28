@@ -1,37 +1,72 @@
 /**
  * Created by mayankrd on 9/27/17.
+ * parser.js - program to parse the text file into a JSON file
  */
 const fs = require('fs');
 
-var result = [];
+var result = []; // to store final converted data
 
-var jsonString = [];
+fs.readFile('assignment_tweet (1).txt', 'utf8', function(err,data) {
 
-fs.readFile('assignment.txt', 'utf8', function(err,data) {
     if(err) throw err;
+
+    // splitting the whole data on the basis of new line
     var splitted = data.toString().split("\n");
 
-    console.log(splitted);
-    console.log(splitted.length);
-    console.log(splitted[2]);
+    // the second line of the text having the dashes
+    var baseLine = splitted[1];
 
-    for (var i = 0; i < splitted.length; i++) {
+    var baseSplit = baseLine.split(new RegExp("\\s"));
 
-       var obj = { created_at: "", text: "", user_id: "" };
-       var line = splitted[i];
-       obj.created_at = line.substr(0, 19);
-       obj.user_id = line.substr(line.length-7);
+    var lens = []; // length of the three splits
 
-       result.push(obj);
+    for(var i = 0; i < baseSplit.length-1; i++){
+        lens.push(baseSplit[i].length);
     }
 
-    jsonString = JSON.stringify(result);
+    // creating the keys of the target JSON objects
+    var template = {};
+    var headingRow = splitted[0];
 
-    console.log(jsonString);
-});
+    // generating the template JSON object
+    for(var i = 0; i < baseSplit.length-1; i++){
+        var key = headingRow.substr(0, lens[i]+1);
+        key = key.trim();
+        template[key] = "";
+        headingRow = headingRow.substr(lens[i]+1);
+    }
 
-fs.writeFile("./matrixtest.json", JSON.stringify(jsonString), function(err) {
+    // fetching the newly added keys
+    var keys = [];
+    for(var key in template)
+        keys.push(key);
 
+    // generating the objects using the template
+    for (var i = 2; i < splitted.length; i++) {
+       var obj = Object.assign({}, template);
+       var line = splitted[i];
+
+       // filling single template object
+       for(var j = 0; j < lens.length; j++){
+            var value = line.substr(0, lens[j]+1);
+            value = value.trim();
+            obj[keys[j]] = value;
+            line = line.substr(lens[j]+1);
+       }
+
+       result.push(obj);
+
+       // writing result into a file after converting into JSON string
+       var json = JSON.stringify(result);
+       fs.writeFile('data.json', json, 'utf8', function (err) {
+           if(err)
+               console.log(err);
+           else{
+               console.log('Data saved to file data.json');
+           }
+
+       });
+    }
 });
 
 
