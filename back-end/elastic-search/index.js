@@ -45,5 +45,4 @@
     bulkIndex('library', 'article', articles);
   }());
 
-
 } ());
