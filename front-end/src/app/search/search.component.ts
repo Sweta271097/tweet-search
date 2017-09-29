@@ -23,6 +23,9 @@ import {SearchService} from "../../services/search.service.client";
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
+/**
+ * SearchComponent
+ */
 export class SearchComponent implements OnInit {
 
   constructor(private searchService: SearchService, private activatedRoute: ActivatedRoute){}
@@ -32,6 +35,7 @@ export class SearchComponent implements OnInit {
   sources = [];
   flag = false;
 
+  // onload execution
   ngOnInit(){
 
     this.flag = false; // initially setting error flag to false
@@ -54,10 +58,12 @@ export class SearchComponent implements OnInit {
     if(this.query != undefined || this.query == "") this.search();
   }
 
-  // search function
+  /**
+   * search()
+   * searches for the given query string by calling search service
+   */
   search() {
 
-    console.log(this.query);
     if(this.query == undefined || this.query == "")
       this.flag = true;
     else {
@@ -79,6 +85,11 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  /**
+   *
+   * @param body
+   * converts a given 'body' or text into a valid and safe HTML
+   */
   convertToHTML(body) {
     for(var key in body){
       this.sources.push(body[key]['_source']);
@@ -88,6 +99,11 @@ export class SearchComponent implements OnInit {
     this.addHyperLinkForHashTag('#');
   }
 
+  /**
+   *
+   * @param symbol
+   * replaces a word starting with @ char to a valid hyperlink
+   */
   addHyperLinkForUser(symbol){
     // adding hyperlinks to @ keywords
     for(var key in this.sources){
@@ -104,6 +120,11 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  /**
+   *
+   * @param symbol
+   * replaces a hashtag starting with # char to a valid hyperlink
+   */
   addHyperLinkForHashTag(symbol){
     // adding hyperlinks to hashtags
     for(var key in this.sources){

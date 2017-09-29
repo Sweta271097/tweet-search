@@ -1,5 +1,5 @@
 /**
- *
+ * Created by mayankrd on 9/29/17.
  * @param queryStr
  * Searches among the Eleasticsearch library for the input query string
  * queryStr - input query string
@@ -16,7 +16,7 @@ exports.searchAll = function (queryStr) {
         log: 'error'
     });
 
-    // search body parameters 
+    // search body parameters
     let body = {
         size: 1000,
         from: 0,
