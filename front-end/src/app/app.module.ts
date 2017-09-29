@@ -8,13 +8,15 @@ import {HttpModule} from "@angular/http";
 import {Routing} from "./app.routing";
 import { SearchComponent } from './search/search.component';
 import {Safe} from "./search/trust.pipe";
+import { NotfoundComponent } from './notfound/notfound.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    Safe
+    Safe,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpModule, RouterModule, Routing
