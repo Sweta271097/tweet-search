@@ -1,3 +1,12 @@
+/**
+ *
+ * @param queryStr
+ * Searches among the Eleasticsearch library for the input query string
+ * queryStr - input query string
+ * index name - library
+ * Elasticsearch Port - 9200
+ *
+ */
 exports.searchAll = function (queryStr) {
     'use strict';
     const elasticsearch = require('elasticsearch');
@@ -7,6 +16,7 @@ exports.searchAll = function (queryStr) {
         log: 'error'
     });
 
+    // search body parameters 
     let body = {
         size: 1000,
         from: 0,
