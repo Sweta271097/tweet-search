@@ -35,7 +35,6 @@
           <td class="w-25"> {{res._source.created_at}} </td>
           <td class="w-50" [innerHTML]=res._source.text> </td>
           <td class="w-25"> {{res._source.user_id}} </td>
-          <td [innerHTML]="html"></td>
         </tr>
 
         </tbody>
@@ -44,7 +43,5 @@
     <div class="col-lg-2"></div>
   </div>
   <!--end search results table-->
-
-  <div [innerHTML]="html"></div>
 
 </div>

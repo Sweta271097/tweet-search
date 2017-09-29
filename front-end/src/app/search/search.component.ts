@@ -1,21 +1,19 @@
-import {Component, OnInit} from '@angular/core';
-import { SearchService } from "../services/search.service.client";
+import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {SearchService} from "../../services/search.service.client";
 
 @Component({
-  selector: 'app-root',
-  template: `<router-outlet></router-outlet>`,
-  styleUrls: ['./app.component.css']
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
 })
-
-export class AppComponent implements OnInit{
+export class SearchComponent implements OnInit {
 
   constructor(private searchService: SearchService, private activatedRoute: ActivatedRoute){}
 
   title = 'app';
   query = '';
   result = [];
-  html = "<h1> Mayank </h1>";
   sources = [];
 
   ngOnInit(){
@@ -71,4 +69,5 @@ export class AppComponent implements OnInit{
       }
     }
   }
+
 }
