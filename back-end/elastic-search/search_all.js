@@ -11,10 +11,9 @@ exports.searchAll = function (queryStr) {
         size: 1000,
         from: 0,
         query: {
-            match: {
-                text: {
-                    query: queryStr
-                }
+            multi_match : {
+                query:    queryStr,
+                fields: [ "text", "user_id", "created_at"]
             }
         }
     };
