@@ -12,12 +12,14 @@ export class SearchComponent implements OnInit {
 
   constructor(private searchService: SearchService, private activatedRoute: ActivatedRoute, private sanitizer: DomSanitizer){}
 
-  title = 'app';
   query = '';
   result = [];
   sources = [];
+  flag = false;
 
   ngOnInit(){
+
+    this.flag = false; // initially setting error flag to false
 
     this.activatedRoute.params
       .subscribe(
@@ -34,46 +36,45 @@ export class SearchComponent implements OnInit {
       }
     );
 
-    this.search();
+    if(this.query != undefined || this.query == "") this.search();
   }
 
   // search function
   search() {
 
     console.log(this.query);
-    let q = this.query;
-    if(q.search("#") > -1)
-      q = q.substr(1);
+    if(this.query == undefined || this.query == "")
+      this.flag = true;
+    else {
+      this.flag = false;
+      let q = this.query;
+      if (q.search("#") > -1)
+        q = q.substr(1);
 
-    console.log(q);
-
-    this.searchService.search(q)
-      .subscribe(
-        (data: any) => {
-          console.log(data._body);
-          const body = JSON.parse(data._body);
-          this.convertToHTML(body);
-          this.result = body;
-        },
-        (error: any) => console.log(error)
-      );
+      this.searchService.search(q)
+        .subscribe(
+          (data: any) => {
+            console.log(data._body);
+            const body = JSON.parse(data._body);
+            this.convertToHTML(body);
+            this.result = body;
+          },
+          (error: any) => console.log(error)
+        );
+    }
   }
 
   convertToHTML(body) {
-    console.log(body);
-
     for(var key in body){
       this.sources.push(body[key]['_source']);
     }
 
     this.addHyperLinkForUser('@');
     this.addHyperLinkForHashTag('#');
-
   }
 
   addHyperLinkForUser(symbol){
-
-    // adding hyperlinks to # and @ keywords
+    // adding hyperlinks to @ keywords
     for(var key in this.sources){
       var text = this.sources[key].text;
       var index = text.search(symbol);
@@ -84,14 +85,12 @@ export class SearchComponent implements OnInit {
         let newTag = '<a href=/'+tag+'>'+tag+'</a>';
         const newText = text.replace(tag, newTag);
         this.sources[key].text = newText;
-
       }
     }
   }
 
   addHyperLinkForHashTag(symbol){
-
-    // adding hyperlinks to # and @ keywords
+    // adding hyperlinks to hashtags
     for(var key in this.sources){
       var text = this.sources[key].text;
       var index = text.search(symbol);

@@ -11,6 +11,9 @@
         <input [(ngModel)] = "query"  name="query" id="name" class="form-control mr-sm-2 rounded-right" type="text" placeholder="Search">
         <button (click)="search()" class="btn btn-outline-primary my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
       </div>
+      <div *ngIf="flag" class="alert alert-danger" role="alert">
+        <strong>Oh snap!</strong> Please enter something up here.
+      </div>
     </div>
     <div class="col-lg-2"></div>
   </div>
@@ -27,9 +30,9 @@
       <table class="table table-responsive">
         <thead>
         <tr class="m-0">
-          <th class="w-25">Created At</th>
-          <th class="w-50">Text</th>
-          <th class="w-25">User Id</th>
+          <th class="w-25 text-center">Created At</th>
+          <th class="w-50 text-center">Text</th>
+          <th class="w-25 text-center">User Id</th>
         </tr>
         </thead>
         <tbody>
