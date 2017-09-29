@@ -1,7 +1,22 @@
+/*+----------------------------------------------------------------------
+ ||
+ ||  Component [SearchComponent]
+ ||
+ ||        Author:  [Mayank Ranjan Dayal]
+ ||
+ ||        Purpose:  [Implements the search functionality. Interacts with search client service to fetch results and display in view.]
+ ||
+ |+-----------------------------------------------------------------------
+ ||
+ ||  Constructor:  [Injects an instance of SearchService and Angular ActivatedRoute class]
+ ||
+ ||  Functions:  [ngOnInit, search, convertToHTML, addHyperLinkForUser, addHyperLinkForHashTag]
+ ||
+ ++-----------------------------------------------------------------------*/
+
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {SearchService} from "../../services/search.service.client";
-import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-search',
@@ -10,7 +25,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private searchService: SearchService, private activatedRoute: ActivatedRoute, private sanitizer: DomSanitizer){}
+  constructor(private searchService: SearchService, private activatedRoute: ActivatedRoute){}
 
   query = '';
   result = [];

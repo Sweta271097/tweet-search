@@ -1,3 +1,9 @@
+/**
+ * Created by mayankrd on 9/29/17
+ * This program indexes data from data/data.json file using Elasticsearch
+ * Elasticsearch Port: 9200
+ * Run 'node index.js' to execute this program
+ */
 (function () {
   'use strict';
 
@@ -37,7 +43,10 @@
     .catch(console.err);
   };
 
-  // process the index on data.json file
+    /**
+     * Indexing data/data.json file
+     * Index name: Library
+     */
   (function process() {
     const articlesRaw = fs.readFileSync('../data/data.json');
     const articles = JSON.parse(articlesRaw);

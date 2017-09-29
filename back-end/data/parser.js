@@ -1,12 +1,17 @@
 /**
- * Created by mayankrd on 9/27/17.
+ * Created by mayankrd on 9/29/17.
  * parser.js - program to parse the text file into a JSON file
+ * The generated JSON to be fed to elastic-search/index.js
+ * Run 'node parser.js' to run this program
+ * Data file name: assignment_tweet (1).txt (
+ * Update var fileName -> at line 11 to select a different file
+ * Please make sure that the first two lines(header and seperator) of the input file are same as this one
  */
 const fs = require('fs');
 
 var result = []; // to store final converted data
-
-fs.readFile('assignment_tweet (1).txt', 'utf8', function(err,data) {
+var fileName = 'assignment_tweet (1).txt';
+fs.readFile(fileName, 'utf8', function(err,data) {
 
     if(err) throw err;
 

@@ -13,13 +13,8 @@
   "author": "Mayank Ranjan Dayal (ranjandayal.m@husky.neu.edu)",
   "license": "MIT",
   "dependencies": {
-    "csvtojson": "^1.1.7",
-    "d3-dsv": "^1.0.7",
-    "d3-request": "^1.0.6",
     "elasticsearch": "^13.3.1",
     "express": "^4.15.5",
-    "file-api": "^0.10.4",
-    "node-tsv-json": "^0.2.1",
-    "papaparse": "^4.3.6"
+    "file-api": "^0.10.4"
   }
 }
