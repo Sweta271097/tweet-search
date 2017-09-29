@@ -9,6 +9,7 @@ const APP_ROUTES: Routes = [
   {path: '', component : SearchComponent},
   {path: ':query', component : SearchComponent},
   {path: 'search/:query', component : SearchComponent},
+  {path: 'hashtag/:query', component : SearchComponent},
   {path: '404/unknown', component: NotfoundComponent},
   {path: '**', redirectTo: '404/unknown'}
 

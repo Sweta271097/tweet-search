@@ -1,14 +1,16 @@
 <div class="text-center">
-  <h1>
-    Welcome to {{title}}!!
-  </h1>
+
+
   <!--search bar-->
   <br>
   <div class="row">
     <div class="col-lg-2"></div>
-    <div class="col-lg-8 input-group input-group-lg">
-      <input [(ngModel)] = "query"  name="query" id="name" class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button (click)="search()" class="btn btn-outline-primary my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+    <div class="col-lg-8 ">
+      <h3 class="text-left"> <img src="../../assets/twitter_logo.png" width="3%" height="3%" alt="Responsive image"> Search</h3>
+      <div class="input-group input-group-lg">
+        <input [(ngModel)] = "query"  name="query" id="name" class="form-control mr-sm-2 rounded-right" type="text" placeholder="Search">
+        <button (click)="search()" class="btn btn-outline-primary my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+      </div>
     </div>
     <div class="col-lg-2"></div>
   </div>
@@ -18,9 +20,10 @@
   <!--search results table-->
   <br>
   <div class="row">
-    <div class="col-lg-2"></div>
-    <div class="col-lg-8">
+    <div class="col-lg-2">
 
+    </div>
+    <div class="col-lg-8">
       <table class="table table-responsive">
         <thead>
         <tr class="m-0">

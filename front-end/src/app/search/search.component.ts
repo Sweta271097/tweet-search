@@ -22,15 +22,14 @@ export class SearchComponent implements OnInit {
     this.activatedRoute.params
       .subscribe(
         (params: any) => {
-          console.log(params['query']);
           this.query = params['query'];
+          console.log(this.query);
         }
       );
 
-    // fetching userId and websiteId from current url
+    // fetching query string from current route
     this.activatedRoute.params.subscribe(
       (params: any) => {
-        console.log(params['query']);
         this.query = params['query'];
       }
     );
@@ -38,11 +37,17 @@ export class SearchComponent implements OnInit {
     this.search();
   }
 
+  // search function
   search() {
 
     console.log(this.query);
+    let q = this.query;
+    if(q.search("#") > -1)
+      q = q.substr(1);
 
-    this.searchService.search(this.query)
+    console.log(q);
+
+    this.searchService.search(q)
       .subscribe(
         (data: any) => {
           console.log(data._body);
@@ -61,19 +66,48 @@ export class SearchComponent implements OnInit {
       this.sources.push(body[key]['_source']);
     }
 
+    this.addHyperLinkForUser('@');
+    this.addHyperLinkForHashTag('#');
+
+  }
+
+  addHyperLinkForUser(symbol){
+
     // adding hyperlinks to # and @ keywords
     for(var key in this.sources){
       var text = this.sources[key].text;
-      var index = text.search("@");
+      var index = text.search(symbol);
       if(index > 0){
 
         let tag = text.substr(index);
-        tag = tag.split("\\s")[0];
+        tag = tag.split(" ")[0];
         let newTag = '<a href=/'+tag+'>'+tag+'</a>';
         const newText = text.replace(tag, newTag);
         this.sources[key].text = newText;
 
       }
     }
+  }
+
+  addHyperLinkForHashTag(symbol){
+
+    // adding hyperlinks to # and @ keywords
+    for(var key in this.sources){
+      var text = this.sources[key].text;
+      var index = text.search(symbol);
+      if(index > 0){
+
+        let tag = text.substr(index);
+        tag = tag.split(" ")[0];
+
+        const q = tag.substr(1);
+        let newTag = '<a href=/hashtag/'+q+'>'+tag+'</a>';
+        const newText = text.replace(tag, newTag);
+
+        this.sources[key].text = newText;
+
+      }
+    }
+
   }
 }
