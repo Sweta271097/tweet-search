@@ -7,12 +7,14 @@ import { FormsModule } from '@angular/forms';
 import {HttpModule} from "@angular/http";
 import {Routing} from "./app.routing";
 import { SearchComponent } from './search/search.component';
+import {Safe} from "./search/trust.pipe";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent
+    SearchComponent,
+    Safe
   ],
   imports: [
     BrowserModule, FormsModule, HttpModule, RouterModule, Routing

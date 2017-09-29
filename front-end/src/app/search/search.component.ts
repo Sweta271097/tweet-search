@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {SearchService} from "../../services/search.service.client";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-search',
@@ -9,7 +10,7 @@ import {SearchService} from "../../services/search.service.client";
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private searchService: SearchService, private activatedRoute: ActivatedRoute){}
+  constructor(private searchService: SearchService, private activatedRoute: ActivatedRoute, private sanitizer: DomSanitizer){}
 
   title = 'app';
   query = '';
@@ -17,8 +18,6 @@ export class SearchComponent implements OnInit {
   sources = [];
 
   ngOnInit(){
-
-    console.log('acctivated rout');
 
     this.activatedRoute.params
       .subscribe(
@@ -62,12 +61,19 @@ export class SearchComponent implements OnInit {
       this.sources.push(body[key]['_source']);
     }
 
+    // adding hyperlinks to # and @ keywords
     for(var key in this.sources){
       var text = this.sources[key].text;
-      if(text.search("@") > 0){
-        console.log(text);
+      var index = text.search("@");
+      if(index > 0){
+
+        let tag = text.substr(index);
+        tag = tag.split("\\s")[0];
+        let newTag = '<a href=/'+tag+'>'+tag+'</a>';
+        const newText = text.replace(tag, newTag);
+        this.sources[key].text = newText;
+
       }
     }
   }
-
 }

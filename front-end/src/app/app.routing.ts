@@ -1,13 +1,12 @@
 // Import components
 import {Routes, RouterModule} from '@angular/router';
 import {ModuleWithProviders} from '@angular/core';
-import {AppComponent} from "./app.component";
 import {SearchComponent} from "./search/search.component";
 
 const APP_ROUTES: Routes = [
 
-  {path: '', component : AppComponent},
- // {path: 'search/:query', component : AppComponent},
+  {path: '', component : SearchComponent},
+  {path: ':query', component : SearchComponent},
   {path: 'search/:query', component : SearchComponent}
 
 ];
