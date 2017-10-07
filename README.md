@@ -10,8 +10,8 @@ Search functionality on a plain log file containing Tweets from Twitter
 * Using Twitter Bootstrap4 for responsive and materialzed UI 
 * Implemented custom Angular pipe to mark embedded HTML as safe
 * Front-end validation on search box
-* All links to users(@) are hyperlinks, trigerring a new search
-* All hashtags(#) are hyperlinks, trigerring a new search
+* All links to users(@) are hyperlinks, triggering a new search
+* All hashtags(#) are hyperlinks, triggering a new search
 * Falling to 404 Not Found page in case user hits unknown routes (NotfoundComponent)
 * Custom data parser (backend/data/parser.js) for converting given file into a valid JSON
 * Elasticsearch implementation for searching string with relevance (backend/elastic-search)
