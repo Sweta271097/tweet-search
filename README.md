@@ -1,10 +1,22 @@
 [![Node.js](https://cdn.rawgit.com/aleen42/badges/master/src/node.svg)](#) [![angular](https://rawgit.com/aleen42/badges/master/src/angular.svg)](#) [![npm](https://rawgit.com/aleen42/badges/master/src/npm.svg)](#) [![Heroku](http://heroku-badge.herokuapp.com/?app=newsnest&root=/)](#)
 # TweetSearch
 
-Search functionality on a plain log file containing Tweets from Twitter.
+Search functionality on a plain log file containing Tweets from Twitter
+
+## HIGHLIGHTS
+
+* Client side implementation in Angular2 with Typescript best practices
+* MVC pattern
+* Using Twitter Bootstrap4 for responsive and materialzed UI 
+* Implemented custom Angular pipe to mark embedded HTML as safe
+* Front-end validation on search box
+* All links to users(@) are hyperlinks, trigerring a new search
+* All hashtags(#) are hyperlinks, trigerring a new search
+* Falling to 404 Not Found page in case user hits unknown routes (NotfoundComponent)
+* Custom data parser (backend/data/parser.js) for converting given file into a valid JSON
+* Elasticsearch implementation for searching string with relevance (backend/elastic-search)
 
 ## INSTALLATION
-------------
 
 ### BACK-END:-
 
@@ -39,23 +51,8 @@ Search functionality on a plain log file containing Tweets from Twitter.
 	3. Run 'ng serve' // this will run the Angular app on port 4200
 	4. Browse to 'localhost:4200'
 
-## HIGHLIGHTS
-----------
-
-* Client side implementation in Angular2 with Typescript best practices
-* MVC pattern
-* Using Twitter Bootstrap4 for responsive and materialzed UI 
-* Implemented custom Angular pipe to mark embedded HTML as safe
-* Front-end validation on search box
-* All links to users(@) are hyperlinks, trigerring a new search
-* All hashtags(#) are hyperlinks, trigerring a new search
-* Falling to 404 Not Found page in case user hits unknown routes (NotfoundComponent)
-* Custom data parser (backend/data/parser.js) for converting given file into a valid JSON
-* Elasticsearch implementation for searching string with relevance (backend/elastic-search)
-
 
 ## TEST CASES
-----------
 
 1. Search without entering any text
 2. Search for keyword 'via'. This should list many results with @--- tags.
@@ -65,6 +62,5 @@ Search functionality on a plain log file containing Tweets from Twitter.
 
 
 ## Note:
------
 	1. Please make sure that ports 9200, 3000 and 4200 are free as Elasticsearch, Node.js express and Angular run on these ports respectively by default.
 	2. The given dataset doesn't contains any hashtag. Although the code is written to search for the HashTags
